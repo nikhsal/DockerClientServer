@@ -10,11 +10,8 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        sh 'cd client'
-        app1 = docker.build("nik0904/myclient1")
-        sh 'cd ..'
-        sh 'cd server'
-        app2 = docker.build("nik0904/myserver1")
+        app1 = docker.build("nik0904/myclient1","./client/")
+        app2 = docker.build("nik0904/myserver1","./server/")
     }
     
     stage('Push image') {
