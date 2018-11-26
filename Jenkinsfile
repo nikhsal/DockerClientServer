@@ -25,6 +25,11 @@ node {
             app2.push("${env.BUILD_NUMBER}")
             app2.push("latest")
         }
+        post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+    }
         
     }
 }
